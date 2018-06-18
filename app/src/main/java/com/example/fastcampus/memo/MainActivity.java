@@ -1,11 +1,13 @@
 package com.example.fastcampus.memo;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
                         " values('"+title+"','"+memo+"','"+author+"',"+date+")";
 
                 db.execSQL(insertQuery);
+
+                // 새로운 액티비티 호출
+                Intent intent = new Intent(getBaseContext(), ListActivity.class);
+                startActivity(intent);
+
+                // 현재 액티비티 종료
+                finish();
             }
         });
     }
